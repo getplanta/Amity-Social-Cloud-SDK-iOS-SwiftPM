@@ -24,7 +24,7 @@ Amity SDK supercharges your platform with social features — from Feeds and Cha
 
 ## Dependencies
 
-AmitySDK has dependencies with Realm ~ v5.5.0.
+AmitySDK has dependencies with Realm v10.
 
 ## License
 
