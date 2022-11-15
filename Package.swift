@@ -4,14 +4,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "AmityUIKit",
+    name: "AmitySDK",
     products: [
         .library(
-            name: "AmityUIKit",
-            targets: ["AmityUIKit", "AmitySDK", "Realm"])
+            name: "AmitySDK",
+            targets: ["AmitySDK", "Realm"])
     ],
     targets: [
-        .binaryTarget(name: "AmityUIKit", path: "AmityUIKit.xcframework"),
         .binaryTarget(name: "AmitySDK", path: "AmitySDK.xcframework"),
         .binaryTarget(name: "Realm", path: "Realm.xcframework")
     ]
