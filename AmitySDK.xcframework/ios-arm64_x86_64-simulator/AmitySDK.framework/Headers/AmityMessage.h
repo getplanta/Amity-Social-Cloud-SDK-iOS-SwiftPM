@@ -173,4 +173,11 @@ __attribute__((objc_subclassing_restricted))
  */
 - (nullable AmityVideoData *)getVideoInfo;
 
+/**
+ Gets the thumbnail image data associated with this message.
+ 
+ @return: Returns AmityImageData if present. Else returns nil.
+ */
+- (nullable AmityImageData *)getVideoThumbnailImageInfo;
+
 @end

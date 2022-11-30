@@ -74,7 +74,7 @@
 		</data>
 		<key>Headers/AmityMessage.h</key>
 		<data>
-		JXEZnxrjImSHtAYbi3+VRmCDuM8=
+		mQlNSk1py6txJfuLjStE+ip9j1w=
 		</data>
 		<key>Headers/AmityMyFollowInfo+Private.h</key>
 		<data>
@@ -114,7 +114,7 @@
 		</data>
 		<key>Headers/AmitySDK-Swift.h</key>
 		<data>
-		oNzBR+rosjAYp0MTZ1ceoBJU9ow=
+		F8cyuPnA9BBdxBqrFA1oswI7UXM=
 		</data>
 		<key>Headers/AmitySDK.h</key>
 		<data>
@@ -266,7 +266,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		qOnFUT+6w8jBOH1N0ZVL+7BGvrQ=
+		uxDxDfB9VBmIFqXdS9ODYFrjO/s=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -282,19 +282,19 @@
 		</data>
 		<key>Modules/AmitySDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		3QG4T/ZtqIavg88h51JnHgc4YDU=
+		ROv+6/VtftEQQCWeyJajLnKdkx4=
 		</data>
 		<key>Modules/AmitySDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		S1XZM0suNeWq5UQwIuZv43yDbLs=
+		y4DP+5ofaG6sDemF0NdTDiZtw84=
 		</data>
 		<key>Modules/AmitySDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		3QG4T/ZtqIavg88h51JnHgc4YDU=
+		ROv+6/VtftEQQCWeyJajLnKdkx4=
 		</data>
 		<key>Modules/AmitySDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		vOe7ibNfpxczxpb4oyivNXJaGsg=
+		UKKFgqCNcgLHUOgEyHnE2bFEkp8=
 		</data>
 		<key>Modules/AmitySDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -302,19 +302,19 @@
 		</data>
 		<key>Modules/AmitySDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		HbBLEo1FWvl5gJi4VxMk2sUjsFk=
+		k2QTOD6jHMFBkEY4IOwwL8ha1DY=
 		</data>
 		<key>Modules/AmitySDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		FzvyzydC5RqAezy9sytE7piHpSg=
+		3M8sHwRl/b9LwjYFVyLraGT+N7Q=
 		</data>
 		<key>Modules/AmitySDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		HbBLEo1FWvl5gJi4VxMk2sUjsFk=
+		k2QTOD6jHMFBkEY4IOwwL8ha1DY=
 		</data>
 		<key>Modules/AmitySDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		SnTPUNqQRrC8vcEaFygEy5hhCPc=
+		ggSk/XaES+HvffPL2tGWF/+HD7E=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -450,7 +450,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gr5BQ9Ziov39hhhhiiAxY9Q+kqseMR6qn5fr0nLvn1k=
+			rECnXlA/LIBuk9ua7ekSoSJByqiZ/5R6tdunaPjDqbY=
 			</data>
 		</dict>
 		<key>Headers/AmityMyFollowInfo+Private.h</key>
@@ -520,7 +520,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			puoYlQ8MS2XNaeNnLgq3wsz4R8cVPQownZNajyhnprU=
+			WA9aMluqJQ7gk1ooRvpgiG8TrpotPgQS2webcFj0YN0=
 			</data>
 		</dict>
 		<key>Headers/AmitySDK.h</key>
@@ -807,28 +807,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1W8fr49OtOrsHB0bv3BrVnrNJ5JmO0ZTnxFYvL5QVjU=
+			dWb/V5EToteiyS12pDwL/xbrYAHYUYxpvVQ+rv6lFN0=
 			</data>
 		</dict>
 		<key>Modules/AmitySDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1XfhbCJ8f+joXHn3VK2cED6OAIKvhS8qkrI2ytqQWY4=
+			QyTD/RzxA06QYWWkq4bgk4/4hs849re6SPRH10k1Wmk=
 			</data>
 		</dict>
 		<key>Modules/AmitySDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1W8fr49OtOrsHB0bv3BrVnrNJ5JmO0ZTnxFYvL5QVjU=
+			dWb/V5EToteiyS12pDwL/xbrYAHYUYxpvVQ+rv6lFN0=
 			</data>
 		</dict>
 		<key>Modules/AmitySDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ceqYllZa5+xMbX9sfBqjH8XD7shBJHwdbzxJjfeZMdQ=
+			DsJJwUJ1PULk00iS+NF656kZpICd1yhcVRUfZIKYj4k=
 			</data>
 		</dict>
 		<key>Modules/AmitySDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -842,28 +842,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			lwnvNCfS9IjGIdwB8nVJsn6HIbehKi/p3XjBCmfvhvI=
+			3c78F+0xdoKltjMSFyrt7aWbIXheYW/F0Qq1byoh6eI=
 			</data>
 		</dict>
 		<key>Modules/AmitySDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			K3zIxd1WUuhV5uphnM1ibp98UKvwtnDVsGy1YlmgyN8=
+			4cOpSSxcyUndTgA7nOP49crk/xEIICsPLImvpFNGU6c=
 			</data>
 		</dict>
 		<key>Modules/AmitySDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			lwnvNCfS9IjGIdwB8nVJsn6HIbehKi/p3XjBCmfvhvI=
+			3c78F+0xdoKltjMSFyrt7aWbIXheYW/F0Qq1byoh6eI=
 			</data>
 		</dict>
 		<key>Modules/AmitySDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wY5etZY+HVqjx5X+IRihbaS6EZrltvA7eTq97zT3o6g=
+			ldDtqpvWXxK9qJoGVZkwRpNMKxFzIkYdmtWSjKTJKw4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
