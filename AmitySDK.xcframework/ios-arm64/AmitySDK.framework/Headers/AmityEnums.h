@@ -115,7 +115,11 @@ typedef NS_ENUM(NSInteger, AmityErrorCode) {
     AmityErrorCodeQueryInProgress = 800170,
     AmityErrorCodeConnectionError = 800210,
     AmityErrorCodeUploadFailed = 800310,
-    AmityErrorCodeUnsupported = 800800
+    AmityErrorCodeUnsupported = 800800,
+    // Client session error
+    AmityErrorCodeSessionNotLoggedIn = 800401,
+    AmityErrorCodeSessionEstablishing = 800402,
+    AmityErrorCodeSessionTokenExpired = 800403
 };
 
 /**

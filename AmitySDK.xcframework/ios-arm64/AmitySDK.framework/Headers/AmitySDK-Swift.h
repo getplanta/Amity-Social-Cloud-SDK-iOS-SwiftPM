@@ -665,6 +665,7 @@ SWIFT_CLASS("_TtC8AmitySDK25AmityChannelUpdateBuilder")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class ObserverManager;
 @class RLMRealm;
 @protocol AmityClientDelegate;
 @protocol AmityClientErrorDelegate;
@@ -680,14 +681,15 @@ enum AmityRegion : NSInteger;
 /// Though multiple instance of <code>AmityClient</code> can be created, we don’t recommend it. A single valid instance of <code>AmityClient</code> should be create and retained as long as you want to interact with sdk.
 SWIFT_CLASS("_TtC8AmitySDK11AmityClient")
 @interface AmityClient : NSObject
-@property (nonatomic, strong) RLMRealm * _Nonnull dataRealm;
+@property (nonatomic, readonly, strong) ObserverManager * _Nonnull observerManager;
 @property (nonatomic, strong) ASCNetworkCoordinator * _Nonnull coordinator;
+@property (nonatomic, readonly, strong) RLMRealm * _Nonnull dataRealm;
 /// You can implement this delegate to listen to various sdk events
 /// such as bad session, global ban, connection status changes etc.
 @property (nonatomic, weak) id <AmityClientDelegate> _Nullable delegate;
 @property (nonatomic, weak) id <AmityClientErrorDelegate> _Nullable clientErrorDelegate SWIFT_DEPRECATED_MSG("This property will be removed in the future. Please use `delegate` property instead.");
 /// Current connection status for SDK. This property supports KVO currently but we recommend to use <code>didChangeConnectionStatus:</code> method from <code>AmityClientDelegate</code>. KVO observation for this property will be removed in future.
-@property (nonatomic) enum AmityConnectionStatus connectionStatus;
+@property (nonatomic) enum AmityConnectionStatus connectionStatus SWIFT_DEPRECATED_MSG("This property will be removed in the future.");
 /// Id of the current user.
 @property (nonatomic, readonly, copy) NSString * _Nullable currentUserId;
 /// Current User live object
@@ -734,7 +736,7 @@ SWIFT_CLASS("_TtC8AmitySDK11AmityClient")
 ///     completion: Completion handler to be called when device registration is successful or failed.
 ///   </li>
 /// </ul>
-- (void)loginWithUserId:(NSString * _Nonnull)userId displayName:(NSString * _Nullable)displayName authToken:(NSString * _Nullable)authToken completion:(void (^ _Nullable)(BOOL, NSError * _Nullable))completion;
+- (void)loginWithUserId:(NSString * _Nonnull)userId displayName:(NSString * _Nullable)displayName authToken:(NSString * _Nullable)authToken completion:(void (^ _Nullable)(BOOL, NSError * _Nullable))completion SWIFT_DEPRECATED_MSG("This login (+completion) will be removed in the future, please use [login(...) async throws] instead.");
 /// Disconnect from the server without logging out the user.
 /// This function does not destroy the current user session. The SDK connection can be resumed, by calling <code>.login(...)</code> with the current userId.
 - (void)disconnect;
@@ -749,7 +751,6 @@ SWIFT_CLASS("_TtC8AmitySDK11AmityClient")
 /// </ul>
 - (void)logout;
 - (void)ekoAsyncBackgroundRealmTransaction:(void (^ _Nonnull)(RLMRealm * _Nonnull))block;
-- (void)trackLiveCollection:(AmityCollection<id> * _Nonnull)liveCollection;
 /// Register the current device (and the current logged-in user) to receive
 /// push notifications.
 /// You can call this method as many times as you’d like: the last call
@@ -792,12 +793,15 @@ SWIFT_CLASS("_TtC8AmitySDK11AmityClient")
 ///   </li>
 /// </ul>
 - (void)unregisterDeviceForPushNotificationForUserId:(NSString * _Nullable)userId completion:(void (^ _Nullable)(BOOL, NSError * _Nullable))completion;
-/// Updates current user
-/// \param builder Builder class which provides methods to update user information. Only set information which you want to update
-///
-/// \param completion Completion handler which gets called after update is success or failure.
-///
 - (void)updateUser:(AmityUserUpdateBuilder * _Nonnull)builder completion:(void (^ _Nullable)(BOOL, NSError * _Nullable))completion;
+- (NSDictionary<NSString *, id> * _Nullable)sendCustomCommandWithCommand:(NSString * _Nonnull)command SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+@interface AmityClient (SWIFT_EXTENSION(AmitySDK))
 /// Checks whether the current user has permission or not.
 /// \param permission Permission to check
 ///
@@ -820,11 +824,7 @@ SWIFT_CLASS("_TtC8AmitySDK11AmityClient")
 /// \param completion Completion handler with boolean which returns True if permission is granted else returns False
 ///
 - (void)hasPermission:(AmityPermission)permission forCommunity:(NSString * _Nonnull)communityId completion:(void (^ _Nonnull)(BOOL))completion;
-- (NSDictionary<NSString *, id> * _Nullable)sendCustomCommandWithCommand:(NSString * _Nonnull)command SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
-
 
 
 /// Delegate for AmityClient instance. This delegate is used for
@@ -849,7 +849,7 @@ SWIFT_PROTOCOL("_TtP8AmitySDK19AmityClientDelegate_")
 /// Notifies when connection status changes in sdk.
 /// \param status enum AmityConnectionStatus which defines different state of connection
 ///
-- (void)didChangeConnectionStatusWithStatus:(enum AmityConnectionStatus)status;
+- (void)didChangeConnectionStatusWithStatus:(enum AmityConnectionStatus)status SWIFT_DEPRECATED_MSG("This function will be removed in the future.");
 @end
 
 
@@ -3099,6 +3099,13 @@ SWIFT_CLASS("_TtC8AmitySDK17EkoNetworkRequest")
 
 
 
+
+
+SWIFT_CLASS("_TtC8AmitySDK15ObserverManager")
+@interface ObserverManager : NSObject
+- (void)trackLiveCollection:(AmityCollection<id> * _Nonnull)liveCollection;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
 
 
 

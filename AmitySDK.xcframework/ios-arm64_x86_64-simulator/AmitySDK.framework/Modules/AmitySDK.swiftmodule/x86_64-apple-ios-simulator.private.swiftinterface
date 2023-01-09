@@ -51,6 +51,18 @@ public class AmityRegionalEndpoint : ObjectiveC.NSObject {
   case EU
   case SG
   case US
+  public var mqttHost: Swift.String {
+    get
+  }
+  public var rpcUrl: Swift.String {
+    get
+  }
+  public var httpUrl: Swift.String {
+    get
+  }
+  public var urlComponents: Foundation.URLComponents {
+    get
+  }
   public var regionIdentifier: Swift.String {
     get
   }
@@ -83,23 +95,22 @@ public struct AmityVideoContentSettings : Swift.Codable {
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
 }
-@objc public enum AmityConnectionStatus : Swift.Int {
-  case notConnected = 0
-  case disconnected = 1
-  case connecting = 2
-  case connected = 3
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
+@_hasMissingDesignatedInitializers @objc public class AmityClient : ObjectiveC.NSObject, Foundation.ObservableObject {
+  @Combine.Published @_projectedValueProperty($sessionState) public var sessionState: AmitySDK.SessionState {
     get
   }
-}
-@_hasMissingDesignatedInitializers @objc public class AmityClient : ObjectiveC.NSObject {
-  @objc public var dataRealm: Realm.RLMRealm
+  public var $sessionState: Combine.Published<AmitySDK.SessionState>.Publisher {
+    get
+  }
+  @objc final public let observerManager: AmitySDK.ObserverManager
   @objc public var coordinator: AmitySDK.ASCNetworkCoordinator
+  @objc public var dataRealm: Realm.RLMRealm {
+    @objc get
+  }
   @objc weak public var delegate: AmitySDK.AmityClientDelegate?
   @available(*, deprecated, message: "This property will be removed in the future. Please use `delegate` property instead.")
   @objc weak public var clientErrorDelegate: AmitySDK.AmityClientErrorDelegate?
+  @available(*, deprecated, message: "This property will be removed in the future.")
   @objc dynamic public var connectionStatus: AmitySDK.AmityConnectionStatus
   @objc public var currentUserId: Swift.String? {
     @objc get
@@ -120,23 +131,20 @@ public struct AmityVideoContentSettings : Swift.Codable {
   @objc convenience public init(apiKey: Swift.String, httpUrl: Swift.String, socketUrl: Swift.String) throws
   @available(*, deprecated, message: "This method will be removed in future. Please use `init(apiKey:_, region:_)` or `init(apiKey:_, endpoint:_)` instead")
   @objc convenience public init(apiKey: Swift.String, url: Swift.String) throws
+  @objc deinit
+  @available(*, deprecated, message: "This login (+completion) will be removed in the future, please use [login(...) async throws] instead.")
   @objc public func login(userId: Swift.String, displayName: Swift.String?, authToken: Swift.String?, completion: AmitySDK.AmityRequestCompletion?)
+  #if compiler(>=5.3) && $AsyncAwait
+  @_Concurrency.MainActor public func login(userId: Swift.String, displayName: Swift.String?, authToken: Swift.String?, sessionHandler: AmitySDK.SessionHandler) async throws
+  #endif
   @objc public func disconnect()
   @objc public func logout()
   @objc public func ekoAsyncBackgroundRealmTransaction(_ block: @escaping (Realm.RLMRealm) -> Swift.Void)
-  @objc public func trackLiveCollection(_ liveCollection: AmitySDK.AmityCollection<Swift.AnyObject>)
   @objc public func registerDeviceForPushNotification(withDeviceToken token: Swift.String, completion: AmitySDK.AmityRequestCompletion?)
   @objc public func unregisterDeviceForPushNotification(forUserId userId: Swift.String?, completion: AmitySDK.AmityRequestCompletion?)
   @objc public func updateUser(_ builder: AmitySDK.AmityUserUpdateBuilder, completion: AmitySDK.AmityRequestCompletion?)
-  @objc public func hasPermission(_ permission: AmitySDK.AmityPermission, completion: @escaping AmitySDK.AmityPermissionCompletion)
-  @objc public func hasPermission(_ permission: AmitySDK.AmityPermission, forChannel channelId: Swift.String, completion: @escaping AmitySDK.AmityPermissionCompletion)
-  @objc public func hasPermission(_ permission: AmitySDK.AmityPermission, forCommunity communityId: Swift.String, completion: @escaping AmitySDK.AmityPermissionCompletion)
   @objc public func sendCustomCommand(command: Swift.String) -> [Swift.String : Any]?
-  #if compiler(>=5.3) && $AsyncAwait
-  @available(iOS 13.0.0, *)
-  @_Concurrency.MainActor public func getContentSettings() async throws -> AmitySDK.AmityContentSettings
-  #endif
-  @objc deinit
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
 }
 public typealias AmityPermissionCompletion = (Swift.Bool) -> Swift.Void
 public typealias AmityFileUploadCompletion = (AmitySDK.AmityFileData?, Swift.Error?) -> Swift.Void
@@ -165,7 +173,7 @@ extension Realm.RLMRealm {
 public class AmityUserTokenManager {
   public init(apiKey: Swift.String, region: AmitySDK.AmityRegion)
   #if compiler(>=5.3) && $AsyncAwait
-  @_Concurrency.MainActor public func createUserToken(userId: Swift.String, displayName: Swift.String? = nil, authToken: Swift.String? = nil) async -> Swift.Result<AmitySDK.AmityUserToken, Swift.Error>
+  @_Concurrency.MainActor public func createUserToken(userId: Swift.String, displayName: Swift.String? = nil, authToken: Swift.String? = nil) async throws -> AmitySDK.AmityUserToken
   #endif
   @objc deinit
 }
@@ -313,7 +321,13 @@ public enum AmityMessageParentFilter : Swift.Equatable {
 }
 @objc public protocol AmityClientDelegate {
   @objc func didReceiveError(error: Swift.Error)
-  @objc func didChangeConnectionStatus(status: AmitySDK.AmityConnectionStatus)
+  @objc @available(*, deprecated, message: "This function will be removed in the future.")
+  func didChangeConnectionStatus(status: AmitySDK.AmityConnectionStatus)
+}
+extension AmitySDK.AmityClient {
+  @objc dynamic public func hasPermission(_ permission: AmitySDK.AmityPermission, completion: @escaping AmitySDK.AmityPermissionCompletion)
+  @objc dynamic public func hasPermission(_ permission: AmitySDK.AmityPermission, forChannel channelId: Swift.String, completion: @escaping AmitySDK.AmityPermissionCompletion)
+  @objc dynamic public func hasPermission(_ permission: AmitySDK.AmityPermission, forCommunity communityId: Swift.String, completion: @escaping AmitySDK.AmityPermissionCompletion)
 }
 @_inheritsConvenienceInitializers @objc public class ASCNetworkRequestToken : ObjectiveC.NSObject {
   @objc override dynamic public init()
@@ -334,6 +348,12 @@ public enum AmityMessageParentFilter : Swift.Equatable {
   @objc final public func setAvatar(_ avatarData: AmitySDK.AmityImageData?)
   @objc final public func setTags(_ tags: [Swift.String])
   @objc deinit
+}
+extension AmitySDK.AmityClient {
+  #if compiler(>=5.3) && $AsyncAwait
+  @available(iOS 13.0.0, *)
+  @_Concurrency.MainActor public func getContentSettings() async throws -> AmitySDK.AmityContentSettings
+  #endif
 }
 @objc @_inheritsConvenienceInitializers public class AmityUserUpdateBuilder : ObjectiveC.NSObject {
   @objc public func setDisplayName(_ name: Swift.String?)
@@ -362,6 +382,16 @@ public enum AmityMessageParentFilter : Swift.Equatable {
   @objc public func editText(_ text: Swift.String, completion: AmitySDK.AmityRequestCompletion?)
   @objc public func editText(_ text: Swift.String, metadata: [Swift.String : Any]?, mentionees: AmitySDK.AmityMentioneesBuilder?, completion: AmitySDK.AmityRequestCompletion?)
   @objc deinit
+}
+@frozen public enum SessionState : Swift.CustomStringConvertible {
+  case notLoggedIn
+  case establishing
+  case established
+  case tokenExpired
+  case terminated(Swift.Error)
+  public var description: Swift.String {
+    get
+  }
 }
 @objc @_inheritsConvenienceInitializers public class AmityVideoPostBuilder : ObjectiveC.NSObject, AmitySDK.AmityPostBuilder {
   public func setVideos(_ videos: [AmitySDK.AmityVideoData])
@@ -524,6 +554,9 @@ extension AmitySDK.AmityPost {
   @objc public func setAvatar(_ avatarData: AmitySDK.AmityImageData)
   @objc public func build() -> [Swift.String : Any]
   @objc deinit
+}
+public protocol SessionHandler : AnyObject {
+  func sessionWillRenewAccessToken(renewal: AmitySDK.AccessTokenRenewal)
 }
 extension AmitySDK.AmityCommentRepository {
   @objc dynamic public func createComment(forReferenceId referenceId: Swift.String, referenceType type: AmitySDK.AmityCommentReferenceType, parentId: Swift.String?, text: Swift.String) -> AmitySDK.AmityObject<AmitySDK.AmityComment>
@@ -755,6 +788,8 @@ public typealias AmityUserNotificationCompletion = (AmitySDK.AmityUserNotificati
 @available(iOS 13.0.0, *)
 public struct AmityUserToken {
   public let accessToken: Swift.String
+  public let issuedAt: Foundation.Date
+  public let expiresAt: Foundation.Date
 }
 public struct AmityContentSettings : Swift.Decodable {
   public var post: AmitySDK.AmityFeedSettings?
@@ -812,11 +847,11 @@ public struct AmityContentSettings : Swift.Decodable {
 }
 public typealias ASCNetworkRequestCompletion = (AmitySDK.EkoNetworkRequest, [Swift.String : Any]?, Swift.Error?) -> Swift.Void
 @_hasMissingDesignatedInitializers @objc public class ASCNetworkCoordinator : ObjectiveC.NSObject {
+  @objc deinit
   @discardableResult
   @objc public func beginRetryableRequest(_ request: AmitySDK.EkoNetworkRequest, completion: @escaping AmitySDK.ASCNetworkRequestCompletion) -> AmitySDK.ASCNetworkRequestToken
   @objc public func beginRequest(_ request: AmitySDK.EkoNetworkRequest, completion: AmitySDK.ASCNetworkRequestCompletion?)
   @objc public func bind(_ event: Swift.String, withResponder: @escaping (Swift.String, [Swift.String : Any]?) -> Swift.Void)
-  @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers @objcMembers public class AmityFollowResponse : ObjectiveC.NSObject {
   @objc final public let sourceUserId: Swift.String
@@ -833,6 +868,11 @@ public typealias ASCNetworkRequestCompletion = (AmitySDK.EkoNetworkRequest, [Swi
   @objc final public let filterPostTypes: Swift.Set<Swift.String>?
   @objc public init(targetType: AmitySDK.AmityPostTargetType, targetId: Swift.String, sortBy: AmitySDK.AmityPostQuerySortOption, deletedOption: AmitySDK.AmityQueryOption, filterPostTypes: Swift.Set<Swift.String>?)
   @objc deinit
+}
+public protocol AccessTokenRenewal : AnyObject {
+  func renew()
+  func renewWithAuthToken(authToken: Swift.String)
+  func unableToRetrieveAuthToken()
 }
 public typealias AmityPollRequestCompletion = (Swift.String?, Swift.Error?) -> Swift.Void
 @objc @objcMembers public class AmityPollRepository : ObjectiveC.NSObject {
@@ -870,10 +910,30 @@ extension Swift.Error {
   @objc public init(eventType: AmitySDK.AmityCommunityNotificationEventType, isEnabled: Swift.Bool, roleFilter: AmitySDK.AmityRoleFilter?)
   @objc deinit
 }
+@_inheritsConvenienceInitializers @objc public class ObserverManager : ObjectiveC.NSObject {
+  @objc public func trackLiveCollection(_ liveCollection: AmitySDK.AmityCollection<Swift.AnyObject>)
+  @objc override dynamic public init()
+  @objc deinit
+}
 @_inheritsConvenienceInitializers @objc public class AmityStreamCollectionQuery : ObjectiveC.NSObject {
   @objc public func includeStatus(_ status: AmitySDK.AmityStreamStatus)
   @objc override dynamic public init()
   @objc deinit
+}
+@available(*, deprecated, message: "This enum will be removed in the future.")
+@objc public enum AmityConnectionStatus : Swift.Int, Swift.CustomStringConvertible {
+  case notConnected = 0
+  case disconnected = 1
+  case connecting = 2
+  case connected = 3
+  public var description: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
 }
 @objc public class AmityUploadableFile : ObjectiveC.NSObject {
   @objc public var identifier: Swift.String
@@ -1097,14 +1157,12 @@ public typealias AmityChannelNotificationSettingsCompletion = (AmitySDK.AmityCha
 extension AmitySDK.AmityRegion : Swift.Equatable {}
 extension AmitySDK.AmityRegion : Swift.Hashable {}
 extension AmitySDK.AmityRegion : Swift.RawRepresentable {}
-extension AmitySDK.AmityConnectionStatus : Swift.Equatable {}
-extension AmitySDK.AmityConnectionStatus : Swift.Hashable {}
-extension AmitySDK.AmityConnectionStatus : Swift.RawRepresentable {}
 extension AmitySDK.AmityContentFeedType : Swift.Equatable {}
 extension AmitySDK.AmityContentFeedType : Swift.Hashable {}
 extension AmitySDK.AmityContentFeedType : Swift.RawRepresentable {}
 extension AmitySDK.AmityMessageSortOrder : Swift.Equatable {}
 extension AmitySDK.AmityMessageSortOrder : Swift.Hashable {}
+extension AmitySDK.SessionState : Swift.Sendable {}
 extension AmitySDK.AmityVideoTranscodingStatus : Swift.Equatable {}
 extension AmitySDK.AmityVideoTranscodingStatus : Swift.Hashable {}
 extension AmitySDK.AmityVideoTranscodingStatus : Swift.RawRepresentable {}
@@ -1122,6 +1180,12 @@ extension AmitySDK.AmityPollAnswerType : Swift.RawRepresentable {}
 extension AmitySDK.AmityLiveVideoRecordingFileFormat : Swift.Equatable {}
 extension AmitySDK.AmityLiveVideoRecordingFileFormat : Swift.Hashable {}
 extension AmitySDK.AmityLiveVideoRecordingFileFormat : Swift.RawRepresentable {}
+@available(*, deprecated, message: "This enum will be removed in the future.")
+extension AmitySDK.AmityConnectionStatus : Swift.Equatable {}
+@available(*, deprecated, message: "This enum will be removed in the future.")
+extension AmitySDK.AmityConnectionStatus : Swift.Hashable {}
+@available(*, deprecated, message: "This enum will be removed in the future.")
+extension AmitySDK.AmityConnectionStatus : Swift.RawRepresentable {}
 extension AmitySDK.AmityLogLevel : Swift.Equatable {}
 extension AmitySDK.AmityLogLevel : Swift.Hashable {}
 extension AmitySDK.AmityLogLevel : Swift.RawRepresentable {}

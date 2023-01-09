@@ -2,9 +2,12 @@
 This is a fork of the Amity framework SPM repository. In order to speed up build process this fork stores the XCFramework packages in the repository. 
 
 <b> How to update<b/>
-- Download the latest XCFramework files specified in  [Amity SPM - package.swift](https://github.com/AmityCo/Amity-Social-Cloud-SDK-iOS-SwiftPM/tags)
+- Download the latest XCFramework files specified in [Amity SPM - package.swift](https://github.com/AmityCo/Amity-Social-Cloud-SDK-iOS-SwiftPM/tags)
 - Push your changes to main branch of our repo.
+- Tag the commit with the appropriate version number corresponding to Amity
   
+---
+
 # Amity Social Cloud SDKs
 Boost app engagement and grow your user base with plug-and-play social
 features. Amity modules are <b>ready to use</b> — the only things left
