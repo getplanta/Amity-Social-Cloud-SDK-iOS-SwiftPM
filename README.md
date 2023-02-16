@@ -1,7 +1,7 @@
 # Amity: Planta fork information
 This is a fork of the Amity framework SPM repository. In order to speed up build process this fork stores the XCFramework packages in the repository. 
 
-<b> How to update<b/>
+<b> How to update</b>
 - Download the latest XCFramework files specified in [Amity SPM - package.swift](https://github.com/AmityCo/Amity-Social-Cloud-SDK-iOS-SwiftPM/tags)
 - Push your changes to main branch of our repo.
 - Tag the commit with the appropriate version number corresponding to Amity
