@@ -8,10 +8,12 @@ let package = Package(
     products: [
         .library(
             name: "AmitySDK",
-            targets: ["AmitySDK", "Realm"])
+            targets: ["AmitySDK", "Realm", "RealmSwift"]
+        ),
     ],
     targets: [
         .binaryTarget(name: "AmitySDK", path: "AmitySDK.xcframework"),
-        .binaryTarget(name: "Realm", path: "Realm.xcframework")
+        .binaryTarget(name: "Realm", path: "Realm.xcframework"),
+        .binaryTarget(name: "RealmSwift", path: "RealmSwift.xcframework")
     ]
 )
