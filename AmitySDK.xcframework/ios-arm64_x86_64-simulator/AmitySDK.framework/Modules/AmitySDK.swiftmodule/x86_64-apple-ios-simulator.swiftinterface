@@ -124,7 +124,15 @@ public struct AmityCommentCreateOptions {
   public let parentId: Swift.String?
   public let metadata: [Swift.String : Any]?
   public let mentioneeBuilder: AmitySDK.AmityMentioneesBuilder?
-  public init(referenceId: Swift.String, referenceType: AmitySDK.AmityCommentReferenceType, text: Swift.String, parentId: Swift.String? = nil, metadata: [Swift.String : Any]? = nil, mentioneeBuilder: AmitySDK.AmityMentioneesBuilder? = nil)
+  public let attachments: [AmitySDK.AmityCommentAttachment]?
+  public init(referenceId: Swift.String, referenceType: AmitySDK.AmityCommentReferenceType, text: Swift.String, attachments: [AmitySDK.AmityCommentAttachment]? = nil, parentId: Swift.String? = nil, metadata: [Swift.String : Any]? = nil, mentioneeBuilder: AmitySDK.AmityMentioneesBuilder? = nil)
+}
+public struct AmityCommentUpdateOptions {
+  public let text: Swift.String?
+  public let attachments: [AmitySDK.AmityCommentAttachment]?
+  public let metadata: [Swift.String : Any]?
+  public let mentioneesBuilder: AmitySDK.AmityMentioneesBuilder?
+  public init(text: Swift.String? = nil, attachments: [AmitySDK.AmityCommentAttachment]? = nil, metadata: [Swift.String : Any]? = nil, mentioneesBuilder: AmitySDK.AmityMentioneesBuilder? = nil)
 }
 public struct AmityCommentQueryOptions {
   public let referenceId: Swift.String
@@ -133,11 +141,12 @@ public struct AmityCommentQueryOptions {
   public let parentId: Swift.String?
   public let orderBy: AmitySDK.AmityOrderBy
   public let includeDeleted: Swift.Bool
-  public init(referenceId: Swift.String, referenceType: AmitySDK.AmityCommentReferenceType, filterByParentId: Swift.Bool, parentId: Swift.String? = nil, orderBy: AmitySDK.AmityOrderBy, includeDeleted: Swift.Bool)
+  public let dataTypes: AmitySDK.AmityCommentDataTypeFilter?
+  public init(referenceId: Swift.String, referenceType: AmitySDK.AmityCommentReferenceType, filterByParentId: Swift.Bool, dataTypes: AmitySDK.AmityCommentDataTypeFilter? = nil, parentId: Swift.String? = nil, orderBy: AmitySDK.AmityOrderBy, includeDeleted: Swift.Bool)
 }
-@available(iOS 13.0.0, *)
+@_hasMissingDesignatedInitializers @available(iOS 13.0.0, *)
 public class AmityUserTokenManager {
-  public init(apiKey: Swift.String, region: AmitySDK.AmityRegion)
+  convenience public init(apiKey: Swift.String, region: AmitySDK.AmityRegion)
   #if compiler(>=5.3) && $AsyncAwait
   @_Concurrency.MainActor public func createUserToken(userId: Swift.String, displayName: Swift.String? = nil, authToken: Swift.String? = nil) async throws -> AmitySDK.AmityUserToken
   #endif
@@ -578,7 +587,9 @@ public class AmityCommentEditor {
   final public let client: AmitySDK.AmityClient
   final public let commentId: Swift.String
   required public init(client: AmitySDK.AmityClient, commentId: Swift.String)
+  @available(*, deprecated, message: "Please use `updateComment()` method from `AmityCommentRepository` instead")
   public func editText(_ text: Swift.String, completion: AmitySDK.AmityRequestCompletion?)
+  @available(*, deprecated, message: "Please use `updateComment()` method from `AmityCommentRepository` instead")
   public func editText(_ text: Swift.String, metadata: [Swift.String : Any]?, mentionees: AmitySDK.AmityMentioneesBuilder?, completion: AmitySDK.AmityRequestCompletion?)
   @objc deinit
 }
@@ -599,6 +610,15 @@ public class AmityMessageTopic : AmitySDK.AmityTopic {
   case tokenExpired
   case terminated(Swift.Error)
   public var description: Swift.String {
+    get
+  }
+}
+public protocol Attachment {
+  var type: Swift.String { get }
+}
+public enum AmityCommentAttachment : AmitySDK.Attachment {
+  case image(fileId: Swift.String, data: AmitySDK.AmityImageData? = nil)
+  public var type: Swift.String {
     get
   }
 }
@@ -1043,6 +1063,7 @@ public class AmityCommentRepository {
   required public init(client: AmitySDK.AmityClient)
   public func deleteComment(withId commentId: Swift.String, hardDelete: Swift.Bool, completion: AmitySDK.AmityRequestCompletion?)
   public func createComment(with options: AmitySDK.AmityCommentCreateOptions, completion: @escaping AmitySDK.AmityCommentRequestCompletion)
+  public func updateComment(withId commentId: Swift.String, options: AmitySDK.AmityCommentUpdateOptions, completion: @escaping AmitySDK.AmityCommentRequestCompletion)
   public func getLatestComment(withReferenceId referenceId: Swift.String, referenceType: AmitySDK.AmityCommentReferenceType, includeReplies: Swift.Bool) -> AmitySDK.AmityObject<AmitySDK.AmityComment>
   public func getComments(with options: AmitySDK.AmityCommentQueryOptions) -> AmitySDK.AmityCollection<AmitySDK.AmityComment>
   public func getReactions(_ commentId: Swift.String) -> AmitySDK.AmityCollection<AmitySDK.AmityReaction>
@@ -1288,7 +1309,14 @@ public class AmityComment : AmitySDK.AmityModel {
   public var referenceType: AmitySDK.AmityCommentReferenceType {
     get
   }
+  @available(*, deprecated, message: "dataType has been deprecated. Use dataTypes instead.")
   public var dataType: AmitySDK.AmityDataType {
+    get
+  }
+  public var dataTypes: Swift.Set<AmitySDK.AmityCommentDataType> {
+    get
+  }
+  public var attachments: [AmitySDK.AmityCommentAttachment] {
     get
   }
   public var data: [Swift.String : Any]? {
@@ -1541,6 +1569,10 @@ public class AmityChannelQuery {
   public var streamName: Swift.String
   public var query: Swift.String
   public class func make(fromWatcherUrlInfo rtmpInfo: [Swift.String : Any]) -> AmitySDK.AmityLiveStreamURLInfo
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class _ASCAttachmentRealmModel : AmitySDK._ASCSDKRealmModel {
+  @objc override dynamic public init()
   @objc deinit
 }
 @available(iOS 13.0.0, *)
@@ -2459,6 +2491,20 @@ public enum AmityMediaSize : Swift.Int {
     get
   }
 }
+public enum AmityCommentDataTypeFilter {
+  case any([AmitySDK.AmityCommentDataType])
+  case exact([AmitySDK.AmityCommentDataType])
+}
+public enum AmityCommentDataType : Swift.String {
+  case text
+  case image
+  case unknown
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
 @_hasMissingDesignatedInitializers public class AmityRoleFilter {
   public var filterType: AmitySDK.AmityRoleFilterType
   public var roleIds: [Swift.String]?
@@ -2719,3 +2765,6 @@ extension AmitySDK.AmityFollowStatus : Swift.RawRepresentable {}
 extension AmitySDK.AmityFetchPageType : Swift.Equatable {}
 extension AmitySDK.AmityFetchPageType : Swift.Hashable {}
 extension AmitySDK.AmityFetchPageType : Swift.RawRepresentable {}
+extension AmitySDK.AmityCommentDataType : Swift.Equatable {}
+extension AmitySDK.AmityCommentDataType : Swift.Hashable {}
+extension AmitySDK.AmityCommentDataType : Swift.RawRepresentable {}

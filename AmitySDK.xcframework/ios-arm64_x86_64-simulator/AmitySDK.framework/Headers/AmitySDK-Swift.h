@@ -277,6 +277,12 @@ SWIFT_CLASS("_TtC8AmitySDK17_ASCSDKRealmModel")
 @end
 
 
+SWIFT_CLASS("_TtC8AmitySDK24_ASCAttachmentRealmModel")
+@interface _ASCAttachmentRealmModel : _ASCSDKRealmModel
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC8AmitySDK14_ASCRealmModel")
 @interface _ASCRealmModel : _ASCSDKRealmModel
 + (BOOL)shouldIncludeInDefaultSchema SWIFT_WARN_UNUSED_RESULT;
@@ -400,6 +406,7 @@ SWIFT_CLASS("_TtC8AmitySDK18_ASCUserRealmModel")
 @interface _ASCUserRealmModel : _ASCRealmModel
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 #endif
 #if defined(__cplusplus)
@@ -688,6 +695,12 @@ SWIFT_CLASS("_TtC8AmitySDK17_ASCSDKRealmModel")
 @end
 
 
+SWIFT_CLASS("_TtC8AmitySDK24_ASCAttachmentRealmModel")
+@interface _ASCAttachmentRealmModel : _ASCSDKRealmModel
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC8AmitySDK14_ASCRealmModel")
 @interface _ASCRealmModel : _ASCSDKRealmModel
 + (BOOL)shouldIncludeInDefaultSchema SWIFT_WARN_UNUSED_RESULT;
@@ -811,6 +824,7 @@ SWIFT_CLASS("_TtC8AmitySDK18_ASCUserRealmModel")
 @interface _ASCUserRealmModel : _ASCRealmModel
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 #endif
 #if defined(__cplusplus)
