@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.7.1
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -14,6 +14,6 @@ let package = Package(
     targets: [
         .binaryTarget(name: "AmitySDK", path: "AmitySDK.xcframework"),
         .binaryTarget(name: "Realm", path: "Realm.xcframework"),
-        .binaryTarget(name: "RealmSwift", path: "RealmSwift.xcframework")
+        .binaryTarget(name: "RealmSwift", path: "RealmSwift.xcframework"),
     ]
 )

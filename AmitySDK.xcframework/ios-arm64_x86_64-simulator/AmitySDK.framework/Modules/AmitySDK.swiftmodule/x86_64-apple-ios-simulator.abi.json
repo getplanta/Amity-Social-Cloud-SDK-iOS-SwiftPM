@@ -50081,10 +50081,42 @@
             "usr": "s:8AmitySDK0A6ClientC33registerDeviceForPushNotification04withE5Token10completionySS_ySb_s5Error_pSgtcSgtF",
             "mangledName": "$s8AmitySDK0A6ClientC33registerDeviceForPushNotification04withE5Token10completionySS_ySb_s5Error_pSgtcSgtF",
             "moduleName": "AmitySDK",
+            "deprecated": true,
             "declAttributes": [
               "AccessControl",
+              "Available",
               "RawDocComment"
             ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "registerDeviceForPushNotification",
+            "printedName": "registerDeviceForPushNotification(withDeviceToken:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8AmitySDK0A6ClientC33registerDeviceForPushNotification04withE5TokenSbSS_tYaKF",
+            "mangledName": "$s8AmitySDK0A6ClientC33registerDeviceForPushNotification04withE5TokenSbSS_tYaKF",
+            "moduleName": "AmitySDK",
+            "declAttributes": [
+              "AccessControl",
+              "Custom",
+              "RawDocComment"
+            ],
+            "throwing": true,
             "funcSelfKind": "NonMutating"
           },
           {
@@ -50163,10 +50195,50 @@
             "usr": "s:8AmitySDK0A6ClientC35unregisterDeviceForPushNotification9forUserId10completionySSSg_ySb_s5Error_pSgtcSgtF",
             "mangledName": "$s8AmitySDK0A6ClientC35unregisterDeviceForPushNotification9forUserId10completionySSSg_ySb_s5Error_pSgtcSgtF",
             "moduleName": "AmitySDK",
+            "deprecated": true,
             "declAttributes": [
               "AccessControl",
+              "Available",
               "RawDocComment"
             ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "unregisterDeviceForPushNotification",
+            "printedName": "unregisterDeviceForPushNotification(forUserId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8AmitySDK0A6ClientC35unregisterDeviceForPushNotification9forUserIdSbSSSg_tYaKF",
+            "mangledName": "$s8AmitySDK0A6ClientC35unregisterDeviceForPushNotification9forUserIdSbSSSg_tYaKF",
+            "moduleName": "AmitySDK",
+            "declAttributes": [
+              "AccessControl",
+              "Custom",
+              "RawDocComment"
+            ],
+            "throwing": true,
             "funcSelfKind": "NonMutating"
           },
           {
@@ -50237,10 +50309,42 @@
             "usr": "s:8AmitySDK0A6ClientC10updateUser_10completionyAA0aE13UpdateBuilderC_ySb_s5Error_pSgtcSgtF",
             "mangledName": "$s8AmitySDK0A6ClientC10updateUser_10completionyAA0aE13UpdateBuilderC_ySb_s5Error_pSgtcSgtF",
             "moduleName": "AmitySDK",
+            "deprecated": true,
             "declAttributes": [
               "AccessControl",
+              "Available",
               "RawDocComment"
             ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "updateUser",
+            "printedName": "updateUser(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "AmityUserUpdateBuilder",
+                "printedName": "AmitySDK.AmityUserUpdateBuilder",
+                "usr": "s:8AmitySDK0A17UserUpdateBuilderC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8AmitySDK0A6ClientC10updateUserySbAA0aE13UpdateBuilderCYaKF",
+            "mangledName": "$s8AmitySDK0A6ClientC10updateUserySbAA0aE13UpdateBuilderCYaKF",
+            "moduleName": "AmitySDK",
+            "declAttributes": [
+              "AccessControl",
+              "Custom",
+              "RawDocComment"
+            ],
+            "throwing": true,
             "funcSelfKind": "NonMutating"
           },
           {
@@ -58878,10 +58982,36 @@
             "usr": "s:8AmitySDK0A11UserFlaggerC4flag10completionyySb_s5Error_pSgtcSg_tF",
             "mangledName": "$s8AmitySDK0A11UserFlaggerC4flag10completionyySb_s5Error_pSgtcSg_tF",
             "moduleName": "AmitySDK",
+            "deprecated": true,
             "declAttributes": [
               "AccessControl",
+              "Available",
               "RawDocComment"
             ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "flag",
+            "printedName": "flag()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8AmitySDK0A11UserFlaggerC4flagSbyYaKF",
+            "mangledName": "$s8AmitySDK0A11UserFlaggerC4flagSbyYaKF",
+            "moduleName": "AmitySDK",
+            "declAttributes": [
+              "AccessControl",
+              "Custom",
+              "RawDocComment"
+            ],
+            "throwing": true,
             "funcSelfKind": "NonMutating"
           },
           {
@@ -58946,10 +59076,36 @@
             "usr": "s:8AmitySDK0A11UserFlaggerC6unflag10completionyySb_s5Error_pSgtcSg_tF",
             "mangledName": "$s8AmitySDK0A11UserFlaggerC6unflag10completionyySb_s5Error_pSgtcSg_tF",
             "moduleName": "AmitySDK",
+            "deprecated": true,
             "declAttributes": [
               "AccessControl",
+              "Available",
               "RawDocComment"
             ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "unflag",
+            "printedName": "unflag()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8AmitySDK0A11UserFlaggerC6unflagSbyYaKF",
+            "mangledName": "$s8AmitySDK0A11UserFlaggerC6unflagSbyYaKF",
+            "moduleName": "AmitySDK",
+            "declAttributes": [
+              "AccessControl",
+              "Custom",
+              "RawDocComment"
+            ],
+            "throwing": true,
             "funcSelfKind": "NonMutating"
           },
           {
@@ -87378,49 +87534,49 @@
     {
       "filePath": "\/Users\/zryte\/Documents\/EkoMessagingSDKIOS\/EkoChat\/Chat\/Message\/Model\/Message\/ASCMessageRealmModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 675,
+      "offset": 676,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/zryte\/Documents\/EkoMessagingSDKIOS\/EkoChat\/Chat\/Message\/Model\/Message\/ASCMessageRealmModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 722,
+      "offset": 723,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/zryte\/Documents\/EkoMessagingSDKIOS\/EkoChat\/Chat\/Message\/Model\/Message\/ASCMessageRealmModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 804,
+      "offset": 805,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/zryte\/Documents\/EkoMessagingSDKIOS\/EkoChat\/Chat\/Message\/Model\/Message\/ASCMessageRealmModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 990,
+      "offset": 991,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/zryte\/Documents\/EkoMessagingSDKIOS\/EkoChat\/Chat\/Message\/Model\/Message\/ASCMessageRealmModel.swift",
       "kind": "StringLiteral",
-      "offset": 1054,
+      "offset": 1055,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/zryte\/Documents\/EkoMessagingSDKIOS\/EkoChat\/Chat\/Message\/Model\/Message\/ASCMessageRealmModel.swift",
       "kind": "StringLiteral",
-      "offset": 1322,
+      "offset": 1323,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/zryte\/Documents\/EkoMessagingSDKIOS\/EkoChat\/Chat\/Message\/Model\/Message\/ASCMessageRealmModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 1742,
+      "offset": 1743,
       "length": 1,
       "value": "0"
     },
@@ -98453,8 +98609,8 @@
       "filePath": "\/Users\/zryte\/Documents\/EkoMessagingSDKIOS\/AmityBuildConfig\/AmityBuildConfig\/AmityBuildConfigBinaryWrapper.swift",
       "kind": "StringLiteral",
       "offset": 220,
-      "length": 2,
-      "value": "\"\""
+      "length": 2298,
+      "value": "\"ewogICAgImVuZHBvaW50IjogImh0dHBzOi8vYXBpLmFtaXR5LmNvIiwKICAgICJiaWxsaW5nX3ByaXZhdGVfa2V5IjogIi0tLS0tQkVHSU4gUlNBIFBSSVZBVEUgS0VZLS0tLS1NSUlFb3dJQkFBS0NBUUVBeDZQTkVubkIreGJoZG9SV0oyL3BkdXYxVGZGREMxd0VCUzU4WElqVXhNSkJsUlRLWFhzNVIvSzFOaDdWQ1MrRVJFNklHd0RpMVdORnpJN09yRDUvQnRad0M1b2Zhbmc2VkxWYWhUbGJRUjhSR2ZkZEV5enJVSXJwNDZpU2p1WjFuYW1lOVJBdHpoWmJrWWhrSkR2T0FZaUJXNzkrN20rOFpkMHZGMnEyN1NxQzNNbGFaQXg0dnRjTWRhWUFnSitvTFFWSUhKRHkrVFVmSXk3SG1tNWR4d0YwSDRVd2lxT0xaamhUTmc4Y0pkU0ZESmlDYXlZUDJpRlAxTkxZLzlSS0tPNWh0Q1hEVmw5ZlpWdHhIbkFtNHRKM0FpVHE1RkhjSlFhM0kyakdzbWwvN214TU1sSGt4b2kzY25PQzl4a1N4NDhpdk1ZRlRWMFRCMjJWaWRtdVRRSURBUUFCQW9JQkFFc2JoUHQrYzB4VHYxOG5Tb0pyeUJuRmkvUlc0REpWMisxWEg5SndhQnZlT1c0czlEVlhOcVdxMmlJU1YzT3RQTVcyQmQ2aTVyUUJOVEZRU05Ea2NrWFFSemNXTk51SmYraCtraCt0QkhmcmlET01yS2VhTHEyT2xZL2d5OEtYVVlpUFdBNDZtQUVBeUZKb1RjU1QrMXo0VGpLR1NPckxmc1dVQVROK0luUDI3d0RFaVp2VG1hWVVxZC9xbDFaQldjN2E5cHNROWhHVWlTUzJNWXZBUW5ZRE5xb1dzMnBXM0Nlc3d5aHdtVmxWcHZFVWNReHBYY2pHLzl0K3ljUkU4eitOTFFKY3ptUTVnUUcxSUJKN3F3eWZkMFZReUJONjIyVkxJY0lIa0hkZkducHRQZXBsb0x3ZFFDQ21JTEV3RWQ2Y1BsZGZXRmdJNnY0SlQrbjgvTUVDZ1lFQS82RUt2cnBDaGREMFlBWGpPWUhrNDBzTEhScWFVQzVuK1ozYm83NklzLzA2WFl3eEQ3dWtmSklvRUs5YXh0cmVDdjhuM1dhQ1BFWFppUTlXcGQwT3pmWWFINktFc3VLNCtoTjdjYzFtUWh5WXgybmRuSndxZnp0dWg0a1hoZ0plOEUzSDA1alhZaFI0V1VNNXVTUVpMMWdJc0xyMEREWHhHNTE4Y092N3lBOENnWUVBeCszMS9JTEhPK3lTN3dGb0tkVEdrRGY3RzZsVytpWGs5UlVIMGZCUDFoUWtwczBBYlRjM2VTb0dMZ25ucGNLLy9BOG1NcmJ6ZGdjd21HVjZlOTRDTll4ZDJKVnVZMVorK0RtT2s4RU5QZVhZb01LT21kTXJzYUtYU0RnS1NvQUpDL1QwU29EYTZnSDl6UU1qTG11cFRob244NHc2SXd0eWxIOHBVSnNUSitNQ2dZQjZkZ2ZUdng5SFJBY09TVVBGdFBpVitzbGtNKzVoSXhva2R2OVZ2bDEyL0lVTmM2KzlQY05hK2htL2hJSVVhWjJkM3dhV0JobTJEakJjZk1DaHpQamVxbHR4ZEVYbC9MOW83aFJoUEdrVW11YUdBYTFzN1ZOZWlIWTI3L0lZL09IR2RUeVpuY3J3N2FXSi9hNlZoem1aZUs4Ukd6NzI2cENMRGpNalZhblUrUUtCZ0Rrb0hwc0NDRk5wWHRoVlhxSVc0bTE0azZGazJDakxqSmxFV2VmNis5Z0lDakpsaVNtd0QzdmtOOEFSdE5mK3hVUWFVS0ZQREd0Qnd2TE9rQ1c1WW9oTWlNZlNjS3lWbmRiNUhYbkFSemphN1FPSW01ditjdzlsbkRwWlN4ZmhZclM0WXQ2cDErdnVoZENHaFJoUVR5YTA4NWI5RCtIVTgvemdIYitkbGV4aEFvR0JBTms3YlRpZ1FLbHBaWURtbVRwS3BTMVRDVlpvRWU3T3JTNHRmbkJEL0dYR3FWZldrVzBjMHdDbDV1SC9BQkliWlJ2UmZaQWpyeDJBbUJvdWlXb2xpV1pCNDNuc2QwL25oT2c0dXN1UVp2eUg3ZVk3VllTZUl3bGNCemlrekhvKy9UVDFCVXlYNy9JUXFOdllXZ1E3K2tWeGE3L2s5dFNnbk1QSk43Q1hpVmxrLS0tLS1FTkQgUlNBIFBSSVZBVEUgS0VZLS0tLS0iCn0K\""
     },
     {
       "filePath": "\/Users\/zryte\/Documents\/EkoMessagingSDKIOS\/EkoChat\/Chat\/Message\/Transactions\/MessageCreate\/ASCAudioMessageCreateTransaction.swift",

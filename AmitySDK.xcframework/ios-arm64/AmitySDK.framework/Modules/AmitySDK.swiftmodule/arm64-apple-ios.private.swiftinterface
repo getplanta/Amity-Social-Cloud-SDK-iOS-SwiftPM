@@ -1677,9 +1677,21 @@ public class AmityPollAnswer : AmitySDK.AmityModel {
   #endif
   public func disconnect()
   public func logout()
+  @available(*, deprecated, message: "Use `func registerDeviceForPushNotification(withDeviceToken:) async throws -> Bool` instead.")
   public func registerDeviceForPushNotification(withDeviceToken token: Swift.String, completion: AmitySDK.AmityRequestCompletion?)
+  #if compiler(>=5.3) && $AsyncAwait
+  @_Concurrency.MainActor public func registerDeviceForPushNotification(withDeviceToken token: Swift.String) async throws -> Swift.Bool
+  #endif
+  @available(*, deprecated, message: "Use `func unregisterDeviceForPushNotification(forUserId:) async throws -> Bool` instead.")
   public func unregisterDeviceForPushNotification(forUserId userId: Swift.String?, completion: AmitySDK.AmityRequestCompletion?)
+  #if compiler(>=5.3) && $AsyncAwait
+  @_Concurrency.MainActor public func unregisterDeviceForPushNotification(forUserId userId: Swift.String?) async throws -> Swift.Bool
+  #endif
+  @available(*, deprecated, message: "Use `func updateUser(builder:) async throws -> Bool` instead.")
   public func updateUser(_ builder: AmitySDK.AmityUserUpdateBuilder, completion: AmitySDK.AmityRequestCompletion?)
+  #if compiler(>=5.3) && $AsyncAwait
+  @_Concurrency.MainActor public func updateUser(_ builder: AmitySDK.AmityUserUpdateBuilder) async throws -> Swift.Bool
+  #endif
   public func sendCustomCommand(command: Swift.String) -> [Swift.String : Any]?
   public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
 }
@@ -1911,8 +1923,16 @@ public class AmityFeedRepository {
 }
 public class AmityUserFlagger {
   public init(client: AmitySDK.AmityClient, userId: Swift.String)
+  @available(*, deprecated, message: "Use `func flag() async throws -> Bool` instead.")
   public func flag(completion: AmitySDK.AmityRequestCompletion?)
+  #if compiler(>=5.3) && $AsyncAwait
+  @_Concurrency.MainActor public func flag() async throws -> Swift.Bool
+  #endif
+  @available(*, deprecated, message: "Use `func unflag() async throws -> Bool` instead.")
   public func unflag(completion: AmitySDK.AmityRequestCompletion?)
+  #if compiler(>=5.3) && $AsyncAwait
+  @_Concurrency.MainActor public func unflag() async throws -> Swift.Bool
+  #endif
   public func isFlaggedByMe(completion: @escaping (Swift.Bool) -> Swift.Void)
   @objc deinit
 }
