@@ -6,7 +6,7 @@
 	<dict>
 		<key>CHANGELOG.md</key>
 		<data>
-		g8ILbWcDqUdlYE5sX68bezunjUA=
+		TuItpDfkK1iYEY7nLc/KA8/IWYk=
 		</data>
 		<key>Headers/NSError+RLMSync.h</key>
 		<data>
@@ -42,7 +42,7 @@
 		</data>
 		<key>Headers/RLMConstants.h</key>
 		<data>
-		YrGT8+AIPz91U4ni+yEVIfuSfZ0=
+		X7tUrKW39pKREt/52svrJ/kN+ZU=
 		</data>
 		<key>Headers/RLMCredentials.h</key>
 		<data>
@@ -122,7 +122,7 @@
 		</data>
 		<key>Headers/RLMPlatform.h</key>
 		<data>
-		thnXlmdybg2FvT3FhY+3U5BZFAo=
+		rMjVKSYmeE1ZgDP0WxJy7QaplcM=
 		</data>
 		<key>Headers/RLMProperty.h</key>
 		<data>
@@ -202,7 +202,7 @@
 		</data>
 		<key>Headers/RLMUser.h</key>
 		<data>
-		+AEdGegdB4pNtdPeVsUOxltUg6s=
+		j5Zpgb+g0lIwk90bDaauU6Y1Fbk=
 		</data>
 		<key>Headers/RLMUserAPIKey.h</key>
 		<data>
@@ -218,7 +218,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ionpHaCU3FhpXCGDg1+zy7RcBs0=
+		fASD6NvdHTJUlIIQUcrZyHaGb3E=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -334,7 +334,7 @@
 		</data>
 		<key>PrivateHeaders/RLMSyncConfiguration_Private.h</key>
 		<data>
-		+Oe+As4WRS7uZIdMf5L6t71nb6c=
+		Uq5Fv8y5c2BeibZeqe/OqOfQumI=
 		</data>
 		<key>PrivateHeaders/RLMSyncSubscription_Private.h</key>
 		<data>
@@ -351,7 +351,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			72sD/tMmFyFdFugZuGIAvq6m4XWOb6y9Z10KPd2ZxzE=
+			ecxmij1GmlFh7kEp7XzvtUmu59boF344rrr/jldX2ns=
 			</data>
 		</dict>
 		<key>Headers/NSError+RLMSync.h</key>
@@ -414,7 +414,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Zf50rQI/asWDjQc1628JO9uh/R2UCRUJoQvxCL440ks=
+			QntrtgpnRkkfsRAPt4SY8+3rscdQDbqztCyWdLS0vsU=
 			</data>
 		</dict>
 		<key>Headers/RLMCredentials.h</key>
@@ -554,7 +554,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EPSEWgIrnPdVgjenYyR3zGZ4bwLEinT07145OQHdXuE=
+			n8zkay5MESbAFL6eMc22AAmlvvYylqsQj4HAB4zvtNg=
 			</data>
 		</dict>
 		<key>Headers/RLMProperty.h</key>
@@ -694,7 +694,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			q7Tu0aaEsoJWckCcHMIVu0Q5UBRgBmII+qxwPvDsNG0=
+			wTq72vEeK8F3E3s/3DWLNz76GPbIMmApC5KfRF6m0ro=
 			</data>
 		</dict>
 		<key>Headers/RLMUserAPIKey.h</key>
@@ -918,7 +918,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yntuVwBZyd8FoMfuemXs0JM8bKgfFRszJkgUhlu12jw=
+			neftVth2HwCuILURLXm1nMY/GZCeo0G5/yYCIS8gz3Q=
 			</data>
 		</dict>
 		<key>PrivateHeaders/RLMSyncSubscription_Private.h</key>
